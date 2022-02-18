@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Char_Sprites/Fall/Warrior_Fall_3.png" type="Texture" id=1]
 [ext_resource path="res://Char_Sprites/Attack/Warrior_Attack_9.png" type="Texture" id=2]
@@ -25,6 +25,14 @@
 [ext_resource path="res://Char_Sprites/Jump/Warrior_Jump_2.png" type="Texture" id=23]
 [ext_resource path="res://Char_Sprites/Jump/Warrior_Jump_3.png" type="Texture" id=24]
 [ext_resource path="res://Player.gd" type="Script" id=25]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_2.png" type="Texture" id=26]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_3.png" type="Texture" id=27]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_4.png" type="Texture" id=28]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_8.png" type="Texture" id=29]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_5.png" type="Texture" id=30]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_7.png" type="Texture" id=31]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_1.png" type="Texture" id=32]
+[ext_resource path="res://Char_Sprites/Run/Warrior_Run_6.png" type="Texture" id=33]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -47,10 +55,15 @@ animations = [ {
 "loop": true,
 "name": "attack",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 31 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 13.5, 16.5 )
+extents = Vector2( 13.5, 17 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 25 )
@@ -59,8 +72,10 @@ script = ExtResource( 25 )
 position = Vector2( 0, -4 )
 scale = Vector2( 1.07813, 1.04545 )
 frames = SubResource( 1 )
-animation = "attack"
+animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7.5, 0.5 )
+position = Vector2( -7.5, 1 )
 shape = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
