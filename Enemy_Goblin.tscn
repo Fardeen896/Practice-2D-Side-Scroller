@@ -1,0 +1,73 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-4.png.png" type="Texture" id=1]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-9.png.png" type="Texture" id=2]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-6.png.png" type="Texture" id=3]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-10.png.png" type="Texture" id=4]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-5.png.png" type="Texture" id=5]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-8.png.png" type="Texture" id=6]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-11.png.png" type="Texture" id=7]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-7.png.png" type="Texture" id=8]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-12.png.png" type="Texture" id=9]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-18.png.png" type="Texture" id=10]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-16.png.png" type="Texture" id=11]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-14.png.png" type="Texture" id=12]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-15.png.png" type="Texture" id=13]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-17.png.png" type="Texture" id=14]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-19.png.png" type="Texture" id=15]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-20.png.png" type="Texture" id=16]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-13.png.png" type="Texture" id=17]
+[ext_resource path="res://Enemy_Goblin.gd" type="Script" id=18]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-3.png.png" type="Texture" id=19]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-1.png.png" type="Texture" id=20]
+[ext_resource path="res://Goblin_Enemy/Attack/Goblin Attack-2.png.png" type="Texture" id=21]
+[ext_resource path="res://Goblin_Enemy/Walk/Goblin Walk-1.png.png" type="Texture" id=22]
+[ext_resource path="res://Goblin_Enemy/Walk/Goblin Walk-2.png.png" type="Texture" id=23]
+[ext_resource path="res://Goblin_Enemy/Walk/Goblin Walk-3.png.png" type="Texture" id=24]
+[ext_resource path="res://Goblin_Enemy/Walk/Goblin Walk-4.png.png" type="Texture" id=25]
+[ext_resource path="res://Goblin_Enemy/Goblin_Dead.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "attack",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 23 )
+
+[node name="Enemy_Goblin" type="KinematicBody2D"]
+position = Vector2( 0, -1 )
+script = ExtResource( 18 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 1 )
+animation = "walk"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 11, 1 )
+enabled = true
+cast_to = Vector2( 0, 40 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 16 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

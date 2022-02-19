@@ -56,3 +56,10 @@ func _physics_process(delta):
 
 func _on_AnimatedSprite_animation_finished():
 	is_attacking = false
+
+
+
+func _on_Sword_Hitbox_body_entered(body):
+	if "Enemy" in body.name && is_attacking == true:
+		body.dead()
+	

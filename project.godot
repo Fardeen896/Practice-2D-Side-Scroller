@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="2D Side Scroller Practice"
-run/main_scene="res://Stage_One.tscn"
+run/main_scene="res://Title_Screen.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -26,6 +26,8 @@ window/stretch/aspect="keep"
 [global]
 
 "pixel snap"=false
+main=false
+main_scene=false
 
 [physics]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Char_Sprites/Fall/Warrior_Fall_3.png" type="Texture" id=1]
 [ext_resource path="res://Char_Sprites/Attack/Warrior_Attack_9.png" type="Texture" id=2]
@@ -63,7 +63,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 13.5, 17 )
+extents = Vector2( 10.25, 17.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 10.6305 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 25 )
@@ -72,10 +75,20 @@ script = ExtResource( 25 )
 position = Vector2( 0, -4 )
 scale = Vector2( 1.07813, 1.04545 )
 frames = SubResource( 1 )
-animation = "idle"
+animation = "attack"
+frame = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7.5, 1 )
+position = Vector2( -5.25, 0.5 )
 shape = SubResource( 2 )
 
+[node name="Sword_Hitbox" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_Hitbox"]
+position = Vector2( 18, -1 )
+scale = Vector2( 1.07813, 1.04545 )
+shape = SubResource( 3 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="Sword_Hitbox" to="." method="_on_Sword_Hitbox_body_entered"]
