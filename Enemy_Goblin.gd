@@ -1,19 +1,23 @@
 extends KinematicBody2D
 
-const MOVEMENT_SPEED = 50
+#MOVEMENT_SPEED can now be changed between diff goblin types
 const GRAVITY = 25
 const FLOOR = Vector2(0, -1)
 
+export(int) var MOVEMENT_SPEED = 50
+export(int) var hp = 1
 var velocity = Vector2()
 var direction = 1
 var is_dead = false
 
 func dead():
-	is_dead = true
-	velocity = Vector2(0, 0)
-	$AnimatedSprite.play("dead")
-	$CollisionShape2D.disabled = true
-	$Timer.start()
+	hp -= 1
+	if hp <= 0:
+		is_dead = true
+		velocity = Vector2(0, 0)
+		$AnimatedSprite.play("dead")
+		$CollisionShape2D.disabled = true
+		$Timer.start()
 
 
 func _physics_process(delta):
@@ -36,7 +40,12 @@ func _physics_process(delta):
 	if $RayCast2D.is_colliding() == false:
 		direction *= -1
 		$RayCast2D.position.x *= -1
-	
+		
+	if get_slide_count() > 0:
+		for i in range(get_slide_count()):
+			if "Player" in get_slide_collision(i).collider.name:
+				get_slide_collision(i).collider.dead()
+
 
 
 func _on_Timer_timeout():
