@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-#MOVEMENT_SPEED can now be changed between diff goblin types
+
 const GRAVITY = 25
 const FLOOR = Vector2(0, -1)
 

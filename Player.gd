@@ -10,7 +10,9 @@ var on_ground = false
 var is_attacking = false
 var is_dead = false
 
+
 func _physics_process(delta):
+	#Basic movement mechanics/animations being played
 	if is_dead == false:
 		if Input.is_action_pressed("ui_left"):
 			velocity.x = -MOVEMENT_SPEED
