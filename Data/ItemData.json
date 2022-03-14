@@ -1,0 +1,26 @@
+{
+  "Health_Potion": {
+    "ItemCategory": "Resource",
+    "StackSize": 3,
+    "Description": "A sturdy tree branch that can be used for crafting."
+  },
+  "Health Potion": {
+    "ItemCategory": "Resource",
+    "StackSize": 3,
+    "Description": "A sturdy tree branch that can be used for crafting."
+  },
+  "Speed_Potion": {
+    "ItemCategory": "Consumable",
+    "StackSize": 3,
+    "AddHealth": 5,
+    "AddEnergy": 32,
+    "Description": "It smells like medicine."
+  },
+    "Speed Potion": {
+    "ItemCategory": "Consumable",
+    "StackSize": 3,
+    "AddHealth": 5,
+    "AddEnergy": 32,
+    "Description": "It smells like medicine."
+  }
+}

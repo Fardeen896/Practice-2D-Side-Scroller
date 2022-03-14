@@ -1,0 +1,21 @@
+{
+  "Health Potion": {
+    "ID": 1,
+    "ItemCategory": "Consumable",
+    "StackSize": 99,
+    "Description": "Consume this to regain 1 heart!"
+  },
+  "Speed Potion": {
+    "ID": 2,
+    "ItemCategory": "Consumable",
+    "StackSize" 99,
+    "Description": "Consume this to increase your speed for 30 seconds!"
+  },
+  "Example_Proposition": {
+    "ID": 500,
+    "ItemCategory": "Proposition",
+    "StackSize": 1,
+    "Type": Pressing,
+    "Description": "Placeholder for a proposition."
+  }
+}

@@ -29,6 +29,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "attack",
@@ -38,11 +43,6 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -50,6 +50,8 @@ extents = Vector2( 11, 23 )
 
 [node name="Enemy_Goblin" type="KinematicBody2D"]
 position = Vector2( 0, -1 )
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 18 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

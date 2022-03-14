@@ -76,7 +76,13 @@ func _on_AnimatedSprite_animation_finished():
 func _on_Sword_Hitbox_body_entered(body):
 	if "Enemy" in body.name && is_attacking == true:
 		body.dead()
-	
+
+func _input(event):
+	if event.is_action_pressed("ui_interact"):
+		if $PickupZone.items_in_range.size() > 0:
+			var pickup_item = $PickupZone.items_in_range.values()[0]
+			pickup_item.pick_up_item(self)
+			$PickupZone.items_in_range.erase(pickup_item)
 
 
 func _on_Timer_timeout():

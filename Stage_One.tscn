@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GroundTileset00.tres" type="TileSet" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Hazard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Info_Collider.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Textbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Inventory.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UserInterface.gd" type="Script" id=9]
+[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=10]
 
 [node name="Stage_One" type="Node2D"]
 
@@ -16,6 +19,8 @@ position = Vector2( 128, 300 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 2
+collision_mask = 15
 format = 1
 tile_data = PoolIntArray( 131101, 1, 0, 131102, 1, 0, 196612, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196642, 1, 0, 196643, 1, 0, 196644, 1, 0, 196645, 1, 0, 196646, 1, 0, 262145, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262158, 0, 0, 262169, 1, 0, 262170, 1, 0, 327680, 0, 0, 327681, 5, 0, 327684, 1, 0, 327685, 1, 0, 393216, 4, 0, 393217, 5, 0, 393228, 1, 0, 393234, 0, 0, 393235, 1, 0, 393243, 1, 0, 393244, 1, 0, 393245, 1, 0, 458752, 4, 0, 458753, 5, 0, 458761, 1, 0, 458762, 1, 0, 458766, 1, 0, 458767, 1, 0, 458770, 4, 0, 458771, 5, 0, 458772, 1, 0, 458783, 1, 0, 458784, 1, 0, 458793, 0, 0, 524288, 4, 0, 524289, 5, 0, 524294, 0, 0, 524306, 4, 0, 524307, 5, 0, 524323, 1, 0, 524324, 1, 0, 524329, 8, 0, 589824, 4, 0, 589825, 5, 0, 589829, 0, 0, 589830, 5, 0, 589842, 4, 0, 589843, 5, 0, 589846, 1, 0, 589847, 1, 0, 589865, 8, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 0, 655388, 1, 0, 655389, 1, 0, 655390, 1, 0, 655391, 1, 0, 655392, 1, 0, 655393, 1, 0, 655394, 1, 0, 655395, 1, 0, 655396, 1, 0, 655397, 1, 0, 655398, 1, 0, 655399, 1, 0, 655400, 1, 0, 655401, 1, 0 )
 
@@ -54,3 +59,15 @@ position = Vector2( 240, 296 )
 position = Vector2( 472, 288 )
 
 [node name="Textbox" parent="." instance=ExtResource( 7 )]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+script = ExtResource( 9 )
+
+[node name="Inventory" parent="UserInterface" instance=ExtResource( 8 )]
+position = Vector2( 192, 80 )
+
+[node name="ItemDrop" parent="." instance=ExtResource( 10 )]
+position = Vector2( 320, 280 )
+
+[node name="ItemDrop2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 352, 296 )
