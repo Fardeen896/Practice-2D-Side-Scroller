@@ -2,12 +2,12 @@
   "Health_Potion": {
     "ItemCategory": "Resource",
     "StackSize": 3,
-    "Description": "A sturdy tree branch that can be used for crafting."
+    "Description": "Consume this to replenish 1 heart!"
   },
   "Health Potion": {
     "ItemCategory": "Resource",
     "StackSize": 3,
-    "Description": "A sturdy tree branch that can be used for crafting."
+    "Description": "Consume this to replenish 1 heart!"
   },
   "Speed_Potion": {
     "ItemCategory": "Consumable",
